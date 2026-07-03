@@ -18,6 +18,7 @@ from app.database import (
 )
 from app.llm import generate_medical_report
 from app.utils import save_uploaded_file
+from app.report_generator import generate_pdf_report
 
 # -------------------------------------------------
 # Streamlit Config
@@ -115,26 +116,43 @@ if uploaded_file is not None:
         st.subheader("AI Medical Report")
 
         with st.spinner("Generating Report..."):
-        
+
             report = generate_medical_report(
                 prediction,
                 confidence
             )
 
+        # Create PDF report
+        pdf_path = generate_pdf_report(
+            uploaded_file.name,
+            prediction,
+            confidence,
+            report
+        )
+
         st.success("Report Generated Successfully")
 
         st.markdown(report)
 
+        # Download button
+        with open(pdf_path, "rb") as pdf_file:
+        
+            st.download_button(
+                label="📄 Download PDF Report",
+                data=pdf_file,
+                file_name=os.path.basename(pdf_path),
+                mime="application/pdf"
+            )
+
         formatted_report = f"""
         Prediction: {prediction}
-    
+
         Confidence: {confidence:.2f}%
-    
+
         AI Medical Report:
         {report}
-    """
-        
-    
+        """
+
         save_prediction(
             uploaded_file.name,
             prediction,
