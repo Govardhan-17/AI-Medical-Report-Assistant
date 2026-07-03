@@ -1,6 +1,8 @@
 # 🩺 AI Medical Report Assistant
 
-An end-to-end AI-powered medical image analysis system that classifies Chest X-ray images as **NORMAL** or **PNEUMONIA** using **TensorFlow Transfer Learning (EfficientNetB0)** and generates an **AI-assisted medical report** using **Google Gemini**. The application is deployed with **Streamlit** and stores prediction history in **SQLite**.
+An end-to-end AI-powered medical image analysis system that classifies Chest X-ray images as **NORMAL** or **PNEUMONIA** using **TensorFlow Transfer Learning (EfficientNetB0)** and generates an **AI-assisted medical report** using **Google Gemini**.
+
+The application is deployed using **Streamlit**, stores prediction history in **SQLite**, and automatically generates a **professional PDF medical report** for every prediction.
 
 ---
 
@@ -9,6 +11,8 @@ An end-to-end AI-powered medical image analysis system that classifies Chest X-r
 - ✅ Chest X-ray image classification
 - ✅ Transfer Learning using EfficientNetB0
 - ✅ AI-generated medical report using Google Gemini
+- ✅ Automatic PDF medical report generation
+- ✅ Download AI-generated PDF reports
 - ✅ Interactive Streamlit web application
 - ✅ Upload Chest X-ray images for prediction
 - ✅ Display prediction confidence score
@@ -26,6 +30,7 @@ An end-to-end AI-powered medical image analysis system that classifies Chest X-r
 - Streamlit
 - Google Gemini API
 - SQLite
+- ReportLab
 - OpenCV
 - NumPy
 - Pandas
@@ -45,6 +50,7 @@ AI-Medical-Report-Assistant/
 │   ├── predict.py
 │   ├── database.py
 │   ├── llm.py
+│   ├── report_generator.py
 │   └── utils.py
 │
 ├── database/
@@ -61,6 +67,9 @@ AI-Medical-Report-Assistant/
 │   ├── confusion_matrix.png
 │   └── roc_curve.png
 │
+├── reports/
+│   ├── report_YYYYMMDD_HHMMSS.pdf
+│
 ├── model/
 │
 ├── uploads/
@@ -76,13 +85,15 @@ AI-Medical-Report-Assistant/
 
 # 📊 Dataset
 
-**Dataset Name**
+### Dataset Name
 
-Chest X-Ray Images (Pneumonia)
+**Chest X-Ray Images (Pneumonia)**
 
-**Source**
+### Source
 
 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+
+---
 
 ### Dataset Statistics
 
@@ -92,6 +103,8 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 | Validation | 8 | 8 | 16 |
 | Test | 234 | 390 | 624 |
 
+---
+
 ### Classes
 
 - NORMAL
@@ -99,11 +112,22 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 ---
 
+# 📈 Label Distribution
+
+| Class | Images |
+|-------|-------:|
+| NORMAL | 1341 |
+| PNEUMONIA | 3875 |
+
+The dataset is imbalanced; therefore, **class weights** were used during training to improve model performance.
+
+---
+
 # 🧠 Deep Learning Model
 
 Transfer Learning Model:
 
-**EfficientNetB0**
+## EfficientNetB0
 
 ### Image Size
 
@@ -145,15 +169,40 @@ Binary Crossentropy
 
 # 🤖 AI Medical Report
 
-After prediction, Google Gemini generates an AI-assisted medical report containing:
+After prediction, **Google Gemini** generates an AI-assisted medical report containing:
 
 - Disease Prediction
 - Confidence Score
 - Possible Findings
 - Possible Symptoms
 - General Precautions
-- Recommendation to consult a qualified healthcare professional
+- Recommendation to consult a healthcare professional
 - Medical Disclaimer
+
+The generated report is automatically converted into a **professional PDF report**, saved inside the **reports/** folder, and can be downloaded directly from the Streamlit application.
+
+---
+
+# 📄 PDF Report Generation
+
+For every prediction, the application automatically creates a PDF medical report.
+
+Each report includes:
+
+- Image Name
+- Prediction
+- Confidence Score
+- AI-generated Medical Report
+- Medical Disclaimer
+- Timestamp
+
+Generated reports are stored in:
+
+```text
+reports/
+```
+
+Users can also download the report directly from the application.
 
 ---
 
@@ -167,7 +216,11 @@ The application stores prediction history including:
 - AI-generated Medical Report
 - Timestamp
 
-Users can also download the prediction history as a CSV file.
+Additional Features:
+
+- View prediction history
+- Download prediction history as CSV
+- Download AI-generated PDF reports
 
 ---
 
@@ -189,7 +242,7 @@ python -m venv venv
 
 Activate it.
 
-Windows:
+### Windows
 
 ```bash
 venv\Scripts\activate
@@ -205,13 +258,13 @@ pip install -r requirements.txt
 
 # 🔑 Environment Variables
 
-Create a file named `.env` in the project root.
+Create a `.env` file in the project root.
 
 ```env
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 ```
 
-You can generate a Gemini API key from:
+Generate your Gemini API Key from:
 
 https://aistudio.google.com/app/apikey
 
@@ -251,14 +304,18 @@ streamlit run app/main.py
 
 # 🖥️ Application Workflow
 
-1. Upload a Chest X-ray image
-2. Image preprocessing
-3. EfficientNetB0 predicts the disease
-4. Confidence score is displayed
-5. Google Gemini generates an AI medical report
-6. Prediction is stored in SQLite
-7. Prediction history is displayed
-8. History can be downloaded as CSV
+1. Upload a Chest X-ray image.
+2. Preprocess the image.
+3. EfficientNetB0 predicts the disease.
+4. Display prediction confidence.
+5. Google Gemini generates an AI-assisted medical report.
+6. Automatically generate a PDF report.
+7. Save the PDF inside the **reports/** folder.
+8. Store prediction details in SQLite.
+9. Display the report.
+10. Allow users to download the PDF report.
+11. Display prediction history.
+12. Download prediction history as CSV.
 
 ---
 
@@ -271,8 +328,19 @@ The project generates:
 - AUC Graph
 - Confusion Matrix
 - ROC Curve
+- AI-generated PDF Medical Reports
 
-These images are stored inside the `images/` folder.
+Graphs are stored in:
+
+```text
+images/
+```
+
+Medical reports are stored in:
+
+```text
+reports/
+```
 
 ---
 
@@ -280,12 +348,13 @@ These images are stored inside the `images/` folder.
 
 - Multi-class disease classification
 - Grad-CAM visualization
-- PDF medical report generation
 - Docker support
-- Cloud deployment (AWS/Azure/GCP)
+- Cloud deployment (AWS / Azure / GCP)
 - User authentication
+- REST API
 - Patient dashboard
-- REST API support
+- Multi-language AI medical reports
+- Email PDF reports directly to patients
 
 ---
 
@@ -305,4 +374,5 @@ Always consult a qualified healthcare professional for diagnosis, treatment, and
 
 B.Tech – Artificial Intelligence & Machine Learning
 
-GitHub: https://github.com/Govardhan-17
+GitHub:
+https://github.com/Govardhan-17
