@@ -1,160 +1,201 @@
-# AI Medical Report Assistant
+# 🩺 AI Medical Report Assistant
 
-## Overview
-
-AI Medical Report Assistant is an end-to-end deep learning application that analyzes medical images, predicts disease, and generates an AI-assisted medical report using a Large Language Model (LLM).
-
-This project combines TensorFlow, Transfer Learning, Google Gemini, Streamlit, and SQLite into a single medical image analysis system.
+An end-to-end AI-powered medical image analysis system that classifies Chest X-ray images as **NORMAL** or **PNEUMONIA** using **TensorFlow Transfer Learning (EfficientNetB0)** and generates an **AI-assisted medical report** using **Google Gemini**. The application is deployed with **Streamlit** and stores prediction history in **SQLite**.
 
 ---
 
-## Features
+# 🚀 Features
 
-* Medical image classification using TensorFlow
-* Transfer Learning with EfficientNetB0
-* AI-generated medical report using Google Gemini
-* Interactive Streamlit web application
-* Upload medical images for prediction
-* Display prediction confidence
-* Store prediction history in SQLite
-* Download prediction history as CSV
-* Training and evaluation visualization
-
----
-
-## Technologies Used
-
-* Python
-* TensorFlow
-* EfficientNetB0
-* Streamlit
-* SQLite
-* Google Gemini API
-* Scikit-learn
-* OpenCV
-* Matplotlib
-* Pandas
+- ✅ Chest X-ray image classification
+- ✅ Transfer Learning using EfficientNetB0
+- ✅ AI-generated medical report using Google Gemini
+- ✅ Interactive Streamlit web application
+- ✅ Upload Chest X-ray images for prediction
+- ✅ Display prediction confidence score
+- ✅ Store prediction history in SQLite
+- ✅ Download prediction history as CSV
+- ✅ Accuracy, Loss, AUC, ROC Curve, and Confusion Matrix visualization
 
 ---
 
-## Project Structure
+# 🛠️ Technologies Used
+
+- Python 3.12+
+- TensorFlow / Keras
+- EfficientNetB0
+- Streamlit
+- Google Gemini API
+- SQLite
+- OpenCV
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-learn
+
+---
+
+# 📁 Project Structure
 
 ```text
 AI-Medical-Report-Assistant/
 │
 ├── app/
-│   ├── app.py
+│   ├── __init__.py
+│   ├── main.py
 │   ├── predict.py
 │   ├── database.py
 │   ├── llm.py
 │   └── utils.py
+│
+├── database/
 │
 ├── dataset/
 │   ├── train/
 │   ├── val/
 │   └── test/
 │
-├── database/
-├── uploads/
 ├── images/
+│   ├── accuracy.png
+│   ├── loss.png
+│   ├── auc.png
+│   ├── confusion_matrix.png
+│   └── roc_curve.png
+│
 ├── model/
-├── notebooks/
-├── reports/
+│
+├── uploads/
 │
 ├── train.py
 ├── evaluate.py
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## Dataset
+# 📊 Dataset
 
-Dataset Used:
+**Dataset Name**
 
 Chest X-Ray Images (Pneumonia)
 
-Classes:
+**Source**
 
-* NORMAL
-* PNEUMONIA
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
-Dataset contains separate Training, Validation, and Test folders.
+### Dataset Statistics
+
+| Split | NORMAL | PNEUMONIA | Total |
+|-------|-------:|----------:|------:|
+| Train | 1341 | 3875 | 5216 |
+| Validation | 8 | 8 | 16 |
+| Test | 234 | 390 | 624 |
+
+### Classes
+
+- NORMAL
+- PNEUMONIA
 
 ---
 
-## Model
+# 🧠 Deep Learning Model
 
 Transfer Learning Model:
 
-EfficientNetB0
+**EfficientNetB0**
 
-Image Size:
+### Image Size
 
 224 × 224
 
-Optimizer:
+### Optimizer
 
 Adam
 
-Loss Function:
+### Loss Function
 
 Binary Crossentropy
 
-Metrics:
+### Evaluation Metrics
 
-* Accuracy
-* AUC
-
----
-
-## Evaluation Metrics
-
-The model is evaluated using:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* ROC Curve
-* AUC Score
-* Validation AUC
-* Confusion Matrix
-* Classification Report
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC Curve
+- AUC
+- Validation AUC
+- Confusion Matrix
+- Classification Report
 
 ---
 
-## AI Medical Report
+# 📈 Model Performance
 
-After prediction, Google Gemini generates a concise AI-assisted medical report that includes:
-
-* Prediction
-* Possible findings
-* Possible symptoms
-* General precautions
-* Recommendation to consult a healthcare professional
-* Disclaimer that the output is not a medical diagnosis
-
----
-
-## SQLite Database
-
-Prediction history is stored with:
-
-* Image Name
-* Prediction
-* Confidence
-* AI Report
-* Timestamp
+| Metric | Value |
+|--------|-------:|
+| Accuracy | **89.10%** |
+| Precision | **86.76%** |
+| Recall | **97.44%** |
+| F1 Score | **91.79%** |
+| Test AUC | **97.28%** |
 
 ---
 
-## Installation
+# 🤖 AI Medical Report
 
-Clone the repository.
+After prediction, Google Gemini generates an AI-assisted medical report containing:
 
-Install the dependencies:
+- Disease Prediction
+- Confidence Score
+- Possible Findings
+- Possible Symptoms
+- General Precautions
+- Recommendation to consult a qualified healthcare professional
+- Medical Disclaimer
+
+---
+
+# 💾 SQLite Database
+
+The application stores prediction history including:
+
+- Image Name
+- Prediction
+- Confidence Score
+- AI-generated Medical Report
+- Timestamp
+
+Users can also download the prediction history as a CSV file.
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Govardhan-17/AI-Medical-Report-Assistant.git
+
+cd AI-Medical-Report-Assistant
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate it.
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -162,7 +203,21 @@ pip install -r requirements.txt
 
 ---
 
-## Train the Model
+# 🔑 Environment Variables
+
+Create a file named `.env` in the project root.
+
+```env
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+```
+
+You can generate a Gemini API key from:
+
+https://aistudio.google.com/app/apikey
+
+---
+
+# 🏋️ Train the Model
 
 ```bash
 python train.py
@@ -170,49 +225,84 @@ python train.py
 
 ---
 
-## Evaluate the Model
+# 📊 Evaluate the Model
 
 ```bash
 python evaluate.py
 ```
 
+This generates:
+
+- Accuracy Curve
+- Loss Curve
+- AUC Curve
+- Confusion Matrix
+- ROC Curve
+
 ---
 
-## Run the Streamlit Application
+# 🌐 Run the Application
 
 ```bash
-streamlit run app/app.py
+streamlit run app/main.py
 ```
 
 ---
 
-## Expected Output
+# 🖥️ Application Workflow
 
-The application allows users to:
-
-* Upload a chest X-ray image
-* Predict whether the image is NORMAL or PNEUMONIA
-* Display confidence score
-* Generate an AI-assisted medical report
-* Save prediction history
-* View previous predictions
-* Download prediction history as CSV
-
----
-
-## Future Improvements
-
-* Multi-class disease classification
-* Grad-CAM visualization
-* PDF medical report generation
-* User authentication
-* Cloud deployment
-* Docker support
+1. Upload a Chest X-ray image
+2. Image preprocessing
+3. EfficientNetB0 predicts the disease
+4. Confidence score is displayed
+5. Google Gemini generates an AI medical report
+6. Prediction is stored in SQLite
+7. Prediction history is displayed
+8. History can be downloaded as CSV
 
 ---
 
-## Disclaimer
+# 📷 Generated Outputs
 
-This project is intended solely for educational and research purposes.
+The project generates:
 
-The AI prediction and generated report should not be considered a medical diagnosis. Always consult a qualified healthcare professional for diagnosis and treatment.
+- Accuracy Graph
+- Loss Graph
+- AUC Graph
+- Confusion Matrix
+- ROC Curve
+
+These images are stored inside the `images/` folder.
+
+---
+
+# 🚀 Future Improvements
+
+- Multi-class disease classification
+- Grad-CAM visualization
+- PDF medical report generation
+- Docker support
+- Cloud deployment (AWS/Azure/GCP)
+- User authentication
+- Patient dashboard
+- REST API support
+
+---
+
+# ⚠️ Disclaimer
+
+This project is developed **only for educational and research purposes**.
+
+The prediction generated by the deep learning model and the AI-generated medical report **must not be considered a medical diagnosis**.
+
+Always consult a qualified healthcare professional for diagnosis, treatment, and medical advice.
+
+---
+
+# 👨‍💻 Author
+
+**Govardhan Sunkari**
+
+B.Tech – Artificial Intelligence & Machine Learning
+
+GitHub: https://github.com/Govardhan-17
