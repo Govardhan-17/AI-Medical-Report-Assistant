@@ -14,8 +14,6 @@ dataset/
 # Uploaded Images
 uploads/
 
-# Trained Models
-model/
 
 # VS Code
 .vscode/
