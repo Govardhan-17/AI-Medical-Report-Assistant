@@ -1,0 +1,27 @@
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Dataset
+dataset/
+
+# Uploaded Images
+uploads/
+
+# Trained Models
+model/
+
+# VS Code
+.vscode/
+
+# SQLite Database
+*.db
+
+# Jupyter
+.ipynb_checkpoints/
