@@ -38,7 +38,6 @@ The application is deployed using **Streamlit**, stores prediction history in **
 - Scikit-learn
 
 ---
-
 # 📁 Project Structure
 
 ```text
@@ -53,12 +52,10 @@ AI-Medical-Report-Assistant/
 │   ├── report_generator.py
 │   └── utils.py
 │
-├── database/
-│
-├── dataset/
-│   ├── train/
-│   ├── val/
-│   └── test/
+├── docs/
+│   ├── AI_Medical_Report_Assistant_Project_Report.pdf
+│   ├── System_Architecture.png
+│   └── Streamlit_UI.png
 │
 ├── images/
 │   ├── accuracy.png
@@ -67,12 +64,16 @@ AI-Medical-Report-Assistant/
 │   ├── confusion_matrix.png
 │   └── roc_curve.png
 │
-├── reports/
-│   ├── report_YYYYMMDD_HHMMSS.pdf
-│
 ├── model/
+│   └── medical_model.keras
 │
-├── uploads/
+├── reports/
+│   └── report_YYYYMMDD_HHMMSS.pdf
+│
+├── sample_images/
+│   ├── normal_sample.jpg
+│   ├── pneumonia_sample.jpg
+│   └── ...
 │
 ├── train.py
 ├── evaluate.py
@@ -84,6 +85,23 @@ AI-Medical-Report-Assistant/
 ---
 
 # 📊 Dataset
+> **Note:**  
+> The Chest X-ray dataset, uploaded images, SQLite database, and generated reports are excluded from the GitHub repository using `.gitignore` to keep the repository lightweight.
+
+To train the model, download the dataset from Kaggle and place it in the following structure:
+
+```text
+dataset/
+├── train/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+├── val/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+└── test/
+    ├── NORMAL/
+    └── PNEUMONIA/
+```
 
 ### Dataset Name
 
@@ -301,7 +319,48 @@ streamlit run app/main.py
 ```
 
 ---
+# 🏗️ System Architecture
 
+The application follows the workflow below:
+
+```
+Chest X-ray Image
+        │
+        ▼
+Image Upload (Streamlit)
+        │
+        ▼
+Image Preprocessing
+        │
+        ▼
+EfficientNetB0 (Transfer Learning)
+        │
+        ▼
+Disease Prediction
+        │
+        ▼
+Confidence Score
+        │
+        ▼
+Google Gemini API
+        │
+        ▼
+AI Medical Report
+        │
+   ┌────┴────┐
+   ▼         ▼
+SQLite     PDF Report
+   │         │
+   └────┬────┘
+        ▼
+ Streamlit Interface
+```
+
+The complete architecture diagram is available in:
+
+```
+docs/System_Architecture.png
+```
 # 🖥️ Application Workflow
 
 1. Upload a Chest X-ray image.
@@ -321,26 +380,43 @@ streamlit run app/main.py
 
 # 📷 Generated Outputs
 
-The project generates:
+The project automatically generates:
 
 - Accuracy Graph
 - Loss Graph
 - AUC Graph
-- Confusion Matrix
 - ROC Curve
-- AI-generated PDF Medical Reports
+- Confusion Matrix
+- AI-generated Medical Reports (PDF)
 
-Graphs are stored in:
+Evaluation graphs are stored in:
 
 ```text
 images/
 ```
 
-Medical reports are stored in:
+Generated medical reports are stored in:
 
 ```text
 reports/
 ```
+
+Project documentation is available in:
+
+```text
+docs/
+```
+# 📚 Project Documentation
+
+Detailed project documentation is available inside the **docs/** folder.
+
+Contents:
+
+- 📄 Project Report (PDF)
+- 🏗️ System Architecture Diagram
+- 🖥️ Streamlit Application Screenshot
+
+These documents explain the complete system design, implementation, evaluation, and application workflow.
 
 ---
 
@@ -374,5 +450,6 @@ Always consult a qualified healthcare professional for diagnosis, treatment, and
 
 B.Tech – Artificial Intelligence & Machine Learning
 
-GitHub:
-https://github.com/Govardhan-17
+📧 AI & Machine Learning Enthusiast
+
+GitHub: https://github.com/Govardhan-17
