@@ -1,4 +1,4 @@
-# 🩺 AI Medical Report Assistant
+#  AI Medical Report Assistant
 
 An end-to-end AI-powered medical image analysis system that classifies Chest X-ray images as **NORMAL** or **PNEUMONIA** using **TensorFlow Transfer Learning (EfficientNetB0)** and generates an **AI-assisted medical report** using **Google Gemini**.
 
@@ -6,7 +6,7 @@ The application is deployed using **Streamlit**, stores prediction history in **
 
 ---
 
-# 🚀 Features
+#  Features
 
 - ✅ Chest X-ray image classification
 - ✅ Transfer Learning using EfficientNetB0
@@ -22,7 +22,7 @@ The application is deployed using **Streamlit**, stores prediction history in **
 
 ---
 
-# 🛠️ Technologies Used
+#  Technologies Used
 
 - Python 3.12+
 - TensorFlow / Keras
@@ -38,7 +38,7 @@ The application is deployed using **Streamlit**, stores prediction history in **
 - Scikit-learn
 
 ---
-# 📁 Project Structure
+#  Project Structure
 
 ```text
 AI-Medical-Report-Assistant/
@@ -84,7 +84,7 @@ AI-Medical-Report-Assistant/
 
 ---
 
-# 📊 Dataset
+#  Dataset
 > **Note:**  
 > The Chest X-ray dataset, uploaded images, SQLite database, and generated reports are excluded from the GitHub repository using `.gitignore` to keep the repository lightweight.
 
@@ -130,7 +130,7 @@ https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 ---
 
-# 📈 Label Distribution
+#  Label Distribution
 
 | Class | Images |
 |-------|-------:|
@@ -141,7 +141,7 @@ The dataset is imbalanced; therefore, **class weights** were used during trainin
 
 ---
 
-# 🧠 Deep Learning Model
+#  Deep Learning Model
 
 Transfer Learning Model:
 
@@ -173,7 +173,7 @@ Binary Crossentropy
 
 ---
 
-# 📈 Model Performance
+#  Model Performance
 
 | Metric | Value |
 |--------|-------:|
@@ -185,7 +185,7 @@ Binary Crossentropy
 
 ---
 
-# 🤖 AI Medical Report
+#  AI Medical Report
 
 After prediction, **Google Gemini** generates an AI-assisted medical report containing:
 
@@ -201,7 +201,7 @@ The generated report is automatically converted into a **professional PDF report
 
 ---
 
-# 📄 PDF Report Generation
+#  PDF Report Generation
 
 For every prediction, the application automatically creates a PDF medical report.
 
@@ -224,7 +224,7 @@ Users can also download the report directly from the application.
 
 ---
 
-# 💾 SQLite Database
+#  SQLite Database
 
 The application stores prediction history including:
 
@@ -242,7 +242,7 @@ Additional Features:
 
 ---
 
-# ⚙️ Installation
+#  Installation
 
 Clone the repository:
 
@@ -274,7 +274,7 @@ pip install -r requirements.txt
 
 ---
 
-# 🔑 Environment Variables
+#  Environment Variables
 
 Create a `.env` file in the project root.
 
@@ -288,7 +288,7 @@ https://aistudio.google.com/app/apikey
 
 ---
 
-# 🏋️ Train the Model
+# Train the Model
 
 ```bash
 python train.py
@@ -296,7 +296,7 @@ python train.py
 
 ---
 
-# 📊 Evaluate the Model
+#  Evaluate the Model
 
 ```bash
 python evaluate.py
@@ -312,14 +312,14 @@ This generates:
 
 ---
 
-# 🌐 Run the Application
+#  Run the Application
 
 ```bash
 streamlit run app/main.py
 ```
 
 ---
-# 🏗️ System Architecture
+#  System Architecture
 
 The application follows the workflow below:
 
@@ -361,7 +361,7 @@ The complete architecture diagram is available in:
 ```
 docs/System_Architecture.png
 ```
-# 🖥️ Application Workflow
+#  Application Workflow
 
 1. Upload a Chest X-ray image.
 2. Preprocess the image.
@@ -378,7 +378,7 @@ docs/System_Architecture.png
 
 ---
 
-# 📷 Generated Outputs
+#  Generated Outputs
 
 The project automatically generates:
 
@@ -406,7 +406,7 @@ Project documentation is available in:
 ```text
 docs/
 ```
-# 📚 Project Documentation
+#  Project Documentation
 
 Detailed project documentation is available inside the **docs/** folder.
 
@@ -420,7 +420,7 @@ These documents explain the complete system design, implementation, evaluation, 
 
 ---
 
-# 🚀 Future Improvements
+#  Future Improvements
 
 - Multi-class disease classification
 - Grad-CAM visualization
@@ -434,7 +434,7 @@ These documents explain the complete system design, implementation, evaluation, 
 
 ---
 
-# ⚠️ Disclaimer
+#  Disclaimer
 
 This project is developed **only for educational and research purposes**.
 
@@ -444,12 +444,12 @@ Always consult a qualified healthcare professional for diagnosis, treatment, and
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 **Govardhan Sunkari**
 
 B.Tech – Artificial Intelligence & Machine Learning
 
-📧 AI & Machine Learning Enthusiast
+ AI & Machine Learning Enthusiast
 
 GitHub: https://github.com/Govardhan-17
